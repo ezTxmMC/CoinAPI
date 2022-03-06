@@ -1,0 +1,5 @@
+name: CoinAPI
+version: '${project.version}'
+main: net.lalura.coinapi.CoinPlugin
+api-version: 1.17
+authors: [ ezTxmMC ]
