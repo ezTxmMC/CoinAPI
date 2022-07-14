@@ -1,5 +1,6 @@
 name: CoinAPI
 version: '${project.version}'
-main: net.lalura.coinapi.CoinPlugin
+main: dev.eztxm.coinapi.CoinAPI
 api-version: 1.17
 authors: [ ezTxmMC ]
+website: https://eztxmmc.de

@@ -1,11 +1,10 @@
-package net.lalura.coinapi.database;
+package dev.eztxm.coinapi.database;
 
 import com.google.common.base.Preconditions;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.common.cache.RemovalListener;
-import org.bukkit.Bukkit;
 
 import java.sql.*;
 import java.util.concurrent.ExecutionException;
@@ -26,26 +25,22 @@ public class MySQL {
             }).build(new CacheLoader<Integer, Connection>() {
                 @Override
                 public Connection load(Integer integer) throws Exception {
-                    Bukkit.getConsoleSender().sendMessage("[MySQL] Verbunden");
                     return createConnection();
                 }
             });
 
-    private String connectionUrl, database, user, password;
-    private Integer port;
+    private final String connectionUrl;
+    private final Integer port;
+    private final String user;
+    private final String password;
+    private final String database;
 
-    private MySQL(
-            String connectionUrl,
-            String database,
-            String user,
-            String password,
-            Integer port
-    ) {
+    public MySQL(String connectionUrl, Integer port, String user, String password, String database) {
         this.connectionUrl = connectionUrl;
-        this.database = database;
+        this.port = port;
         this.user = user;
         this.password = password;
-        this.port = port;
+        this.database = database;
     }
 
 
@@ -139,11 +134,11 @@ public class MySQL {
 
         public MySQL create() {
             Preconditions.checkNotNull(connectionUrl, "Connection URL is null");
-            Preconditions.checkNotNull(database, "Database is null");
+            Preconditions.checkNotNull(port, "Port is null");
             Preconditions.checkNotNull(user, "Username is null");
             Preconditions.checkNotNull(password, "Password is null");
-            Preconditions.checkNotNull(port, "Port is null");
-            return new MySQL(connectionUrl, database, user, password, port);
+            Preconditions.checkNotNull(database, "Database is null");
+            return new MySQL(connectionUrl, port, user, password, database);
         }
     }
 }
