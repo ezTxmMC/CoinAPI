@@ -6,7 +6,7 @@
 
     <groupId>dev.eztxm</groupId>
     <artifactId>CoinAPI</artifactId>
-    <version>1.0</version>
+    <version>PRE-RELEASE-0.2</version>
     <packaging>jar</packaging>
 
     <name>CoinAPI</name>

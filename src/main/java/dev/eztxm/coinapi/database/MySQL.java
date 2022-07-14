@@ -31,16 +31,16 @@ public class MySQL {
 
     private final String connectionUrl;
     private final Integer port;
+    private final String database;
     private final String user;
     private final String password;
-    private final String database;
 
-    public MySQL(String connectionUrl, Integer port, String user, String password, String database) {
+    public MySQL(String connectionUrl, Integer port, String database, String user, String password) {
         this.connectionUrl = connectionUrl;
         this.port = port;
+        this.database = database;
         this.user = user;
         this.password = password;
-        this.database = database;
     }
 
 
@@ -135,10 +135,10 @@ public class MySQL {
         public MySQL create() {
             Preconditions.checkNotNull(connectionUrl, "Connection URL is null");
             Preconditions.checkNotNull(port, "Port is null");
+            Preconditions.checkNotNull(database, "Database is null");
             Preconditions.checkNotNull(user, "Username is null");
             Preconditions.checkNotNull(password, "Password is null");
-            Preconditions.checkNotNull(database, "Database is null");
-            return new MySQL(connectionUrl, port, user, password, database);
+            return new MySQL(connectionUrl, port, database, user, password);
         }
     }
 }
